@@ -1,19 +1,23 @@
 {
     "name": "BetterYoutube",
     "version": "1.0",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "content_scripts": [
         {
             "matches": [
                 "https://*.youtube.com/*"
             ],
             "js": [
-                "main.js"
+                "main.js",
+                "titleTranslation.js"
             ]
         }
     ],
-    "browser_action": {
+    "action": {
         "default_title": "BetterYoutube",
-        "default_popup": "popup.html"
-    }
+        "default_popup": "html/popup.html"
+    },
+    "permissions": [
+        "storage"
+    ]
 }
