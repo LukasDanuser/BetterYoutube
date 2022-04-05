@@ -13,3 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
         chrome.storage.sync.set({ 'autoQuality': value });
     }
 }, false)
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('#hideShorts').addEventListener('click', hideShorts, false)
+    function hideShorts() {
+        var value = document.querySelector('#hideShorts').checked;
+        chrome.storage.sync.set({ 'hideShorts': value });
+    }
+}, false)
