@@ -6,3 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 }, false)
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('#autoQuality').addEventListener('click', autoQuality, false)
+    function autoQuality() {
+        var value = document.querySelector('#autoQuality').checked;
+        chrome.storage.sync.set({ 'autoQuality': value });
+    }
+}, false)
