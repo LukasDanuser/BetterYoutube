@@ -1,7 +1,7 @@
 {
     "name": "BetterYoutube",
     "version": "1.0",
-    "manifest_version": 3,
+    "manifest_version": 2,
     "content_scripts": [
         {
             "matches": [
@@ -11,5 +11,9 @@
                 "main.js"
             ]
         }
-    ]
+    ],
+    "browser_action": {
+        "default_title": "BetterYoutube",
+        "default_popup": "popup.html"
+    }
 }
