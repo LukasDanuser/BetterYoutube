@@ -6,6 +6,7 @@ bin-release/
 
 # Other files and folders
 .settings/
+js/temp.js
 
 # Executables
 *.swf
