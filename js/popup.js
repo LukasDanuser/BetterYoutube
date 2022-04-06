@@ -15,11 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
 }, false)
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('#quality').addEventListener('click', autoQuality, false)
-    function autoQuality() {
+    document.querySelector('#quality').addEventListener('click', quality, false)
+    function quality() {
         var select = document.querySelector('#quality');
         var quality = select.children[select.selectedIndex].value;
         chrome.storage.local.set({ 'quality': quality });
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+            chrome.tabs.sendMessage(tabs[0].id, {
+                type: "update_quality",
+                quality: quality
+            }, function (response) { });
+        });
     }
 }, false)
 
