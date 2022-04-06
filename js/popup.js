@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#translateTitle').addEventListener('click', titleTranslation, false)
     function titleTranslation() {
         var value = document.querySelector('#translateTitle').checked;
-        chrome.storage.sync.set({ 'titleTranslation': value });
+        chrome.storage.local.set({ 'titleTranslation': value });
 
     }
 }, false)
@@ -10,15 +10,23 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#autoQuality').addEventListener('click', autoQuality, false)
     function autoQuality() {
         var value = document.querySelector('#autoQuality').checked;
-        chrome.storage.sync.set({ 'autoQuality': value });
+        chrome.storage.local.set({ 'autoQuality': value });
     }
 }, false)
 
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('#quality').addEventListener('click', autoQuality, false)
+    function autoQuality() {
+        var select = document.querySelector('#quality');
+        var quality = select.children[select.selectedIndex].value;
+        chrome.storage.local.set({ 'quality': quality });
+    }
+}, false)
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelector('#hideShorts').addEventListener('click', hideShorts, false)
     function hideShorts() {
         var value = document.querySelector('#hideShorts').checked;
-        chrome.storage.sync.set({ 'hideShorts': value });
+        chrome.storage.local.set({ 'hideShorts': value });
     }
 }, false)
