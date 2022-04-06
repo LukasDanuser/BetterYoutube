@@ -12,7 +12,9 @@
                 "https://*.youtube.com/*"
             ],
             "js": [
-                "main.js"
+                "main.js",
+                "titleTranslation.js",
+                "jquery.js"
             ],
             "run_at": "document_start"
         }
@@ -27,8 +29,5 @@
         "webRequest",
         "tabs",
         "storage"
-    ],
-    "host_permissions": [
-        "https://*.youtube.com/*"
     ]
 }
