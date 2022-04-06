@@ -2,6 +2,10 @@
     "name": "BetterYoutube",
     "version": "1.0",
     "manifest_version": 3,
+    "description": "Better Youtube",
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "matches": [
@@ -9,7 +13,8 @@
             ],
             "js": [
                 "main.js"
-            ]
+            ],
+            "run_at": "document_start"
         }
     ],
     "action": {
@@ -17,8 +22,13 @@
         "default_popup": "html/popup.html"
     },
     "permissions": [
+        "activeTab",
+        "scripting",
         "webRequest",
         "tabs",
         "storage"
+    ],
+    "host_permissions": [
+        "https://*.youtube.com/*"
     ]
 }
