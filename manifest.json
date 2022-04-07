@@ -6,22 +6,21 @@
     "background": {
         "service_worker": "background.js"
     },
-    "content_scripts": [
-        {
-            "matches": [
-                "https://*.youtube.com/*"
-            ],
-            "js": [
-                "main.js",
-                "titleTranslation.js",
-                "jquery.js"
-            ],
-            "run_at": "document_start"
-        }
-    ],
+    "content_scripts": [{
+        "matches": [
+            "https://*.youtube.com/*"
+        ],
+        "js": [
+            "main.js",
+            "titleTranslation.js",
+            "jquery.js"
+        ],
+        "run_at": "document_start"
+    }],
     "action": {
         "default_title": "BetterYoutube",
         "default_popup": "html/popup.html"
+
     },
     "permissions": [
         "activeTab",
