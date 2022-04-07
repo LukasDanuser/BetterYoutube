@@ -1,13 +1,12 @@
-
 function setValue(value) {
     chrome.storage.local.set({ 'api_key': value });
 }
 
-chrome.storage.local.get(['titleTranslation'], function (result) {
-    chrome.storage.local.get(['api_key'], function (keyResult) {
+chrome.storage.local.get(['titleTranslation'], function(result) {
+    chrome.storage.local.get(['api_key'], function(keyResult) {
         if (result.titleTranslation === true) {
 
-            (async () => {
+            (async() => {
                 'use strict';
 
                 /*
@@ -42,8 +41,13 @@ chrome.storage.local.get(['titleTranslation'], function (result) {
                     }
                     var href = a.href;
                     var tmp = href.split('v=')[1];
-                    return tmp.split('&')[0];
+                    if (tmp != undefined) {
+                        return tmp.split('&')[0];
+                    } else {
+                        return "";
+                    }
                 }
+
 
                 function resetChanged() {
                     console.log(" --- Page Change detected! --- ");
@@ -79,10 +83,10 @@ chrome.storage.local.get(['titleTranslation'], function (result) {
                         return a.id == 'video-title' && alreadyChanged.indexOf(a) == -1;
                     });
                     var spans = Array.prototype.slice.call(document.getElementsByTagName("span")).filter(a => {
-                        return a.id == 'video-title'
-                            && !a.className.includes("-radio-")
-                            && !a.className.includes("-playlist-")
-                            && alreadyChanged.indexOf(a) == -1;
+                        return a.id == 'video-title' &&
+                            !a.className.includes("-radio-") &&
+                            !a.className.includes("-playlist-") &&
+                            alreadyChanged.indexOf(a) == -1;
                     });
                     links = links.concat(spans).slice(0, 30);
 
@@ -103,7 +107,7 @@ chrome.storage.local.get(['titleTranslation'], function (result) {
 
                         // Issue API request
                         var xhr = new XMLHttpRequest();
-                        xhr.onreadystatechange = function () {
+                        xhr.onreadystatechange = function() {
                             if (xhr.readyState === 4) { // Success
                                 var data = JSON.parse(xhr.responseText);
 
@@ -121,8 +125,7 @@ chrome.storage.local.get(['titleTranslation'], function (result) {
                                             pageDescription[0].innerHTML = linkify(videoDescription);
                                             console.log("Reverting main video description!");
                                             changedDescription = true;
-                                        }
-                                        else console.log("Failed to find main video description!");
+                                        } else console.log("Failed to find main video description!");
                                     }
 
                                     // Create dictionary for all IDs and their original titles
@@ -147,8 +150,7 @@ chrome.storage.local.get(['titleTranslation'], function (result) {
                                             alreadyChanged.push(links[i]);
                                         }
                                     }
-                                }
-                                else {
+                                } else {
                                     console.log("API Request Failed!");
                                     console.log(requestUrl);
                                     console.log(data);
