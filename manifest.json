@@ -13,7 +13,8 @@
         "js": [
             "main.js",
             "titleTranslation.js",
-            "jquery.js"
+            "jquery.js",
+            "autoQuality.js"
         ],
         "run_at": "document_start"
     }],
