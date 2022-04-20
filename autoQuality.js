@@ -2,53 +2,47 @@ function setValue(value) {
     chrome.storage.local.set({ 'api_key': value });
 }
 
-chrome.storage.local.get(['autoQuality'], function(result) {
-    chrome.storage.local.get(['api_key'], function(keyResult) {
-        chrome.storage.local.get(['quality'], function(qualityResult) {
-            window.addEventListener('DOMContentLoaded', function() {
-                const ytPlayerData = JSON.parse(window.localStorage.getItem('yt-player-quality'));
-                const ytPlayerQuality = JSON.parse(ytPlayerData['data']);
+chrome.storage.local.get(['autoQuality'], function (result) {
+    chrome.storage.local.get(['api_key'], function (keyResult) {
+        chrome.storage.local.get(['quality'], function (qualityResult) {
+            window.addEventListener('DOMContentLoaded', function () {
                 if (result.autoQuality === true) {
                     var qual = "";
                     switch (qualityResult.quality) {
                         case "tiny":
-                            qual = "144";
+                            qual = "144p";
                             break;
                         case "small":
-                            qual = "240";
+                            qual = "240p";
                             break;
                         case "medium":
-                            qual = "360";
+                            qual = "360p";
                             break;
                         case "large":
-                            qual = "480";
+                            qual = "480p";
                             break;
                         case "hd720":
-                            qual = "720";
+                            qual = "720p";
                             break;
                         case "hd1080":
-                            qual = "1080";
+                            qual = "1080p";
                             break;
                         case "hd1440":
-                            qual = "1440";
+                            qual = "1440p";
                             break;
                         case "hd2160":
-                            qual = "2160";
+                            qual = "2160p";
                             break;
                         case "hd2880":
-                            qual = "2880";
+                            qual = "2880p";
                             break;
                         case "highres":
-                            qual = "4320";
+                            qual = "4320p";
                             break;
                         default:
-                            qual = "1080";
+                            qual = "1080p";
                             break;
                     }
-                    ytPlayerQuality['quality'] = qual;
-                    ytPlayerData['data'] = JSON.stringify(ytPlayerQuality);
-                    alert(JSON.stringify(ytPlayerData));
-                    window.localStorage.setItem('yt-player-quality', JSON.stringify(ytPlayerData));
                 }
             });
         });

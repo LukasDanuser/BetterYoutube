@@ -1,6 +1,6 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.type === "update_quality") {
-        window.localStorage['ytaq_quality'] = request.value;
+
 
     } else if (request.type === "anti_translate") {
     } else if (request.type === "auto_quality") {
